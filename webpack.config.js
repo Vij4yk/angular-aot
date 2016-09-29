@@ -4,6 +4,7 @@ const autoprefixer = require('autoprefixer');
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const ProgressPlugin = require('webpack/lib/ProgressPlugin');
@@ -30,7 +31,7 @@ const PORT = 3000;
 const rules = {
   css: {
     test: /\.css$/,
-    use: ['raw', 'postcss']
+    loader: ExtractTextPlugin.extract('css?-autoprefixer!postcss')
   },
   html: {
     test: /\.html$/,
@@ -104,6 +105,7 @@ if (ENV_DEVELOPMENT || ENV_PRODUCTION) {
       name: ['polyfills'],
       minChunks: Infinity
     }),
+    new ExtractTextPlugin(ENV_PRODUCTION ? 'styles.[chunkhash].css' : 'styles.css'),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       hash: false,

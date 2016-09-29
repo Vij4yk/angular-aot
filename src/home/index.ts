@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { SharedModule } from 'src/shared';
 import { HomePage } from './pages/home';
 
 
@@ -14,7 +15,8 @@ const routes: Routes = [
     HomePage
   ],
   imports: [
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    SharedModule
   ]
 })
 export class HomeModule {}

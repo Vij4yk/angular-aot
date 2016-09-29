@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
+import './app.css';
 
 
 @Component({
   selector: 'app',
   template: `
-    <h1>App</h1>
+    <h1 class="app-heading">App</h1>
 
     <router-outlet></router-outlet>
   `
