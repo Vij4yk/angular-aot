@@ -38,7 +38,7 @@ const rules = {
   },
   typescript: {
     test: /\.ts$/,
-    use: ['awesome-typescript', 'angular2-template']
+    use: ['ts', 'angular2-template']
   }
 };
 
@@ -75,7 +75,8 @@ config.plugins = [
     options: {
       postcss: [
         autoprefixer({browsers: ['last 3 versions']})
-      ]
+      ],
+      resolve: {} // @see https://github.com/TypeStrong/ts-loader/issues/283
     }
   }),
   new ContextReplacementPlugin(

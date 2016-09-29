@@ -1,3 +1,4 @@
+const compression = require('compression');
 const express = require('express');
 const logger = require('winston');
 
@@ -12,6 +13,9 @@ const ROOT_DIR = process.cwd();
 const DIST_DIR = `${ROOT_DIR}/dist`;
 
 const app = express();
+
+// gzip compression
+app.use(compression());
 
 // request logging
 app.use(require('morgan')('dev'));
