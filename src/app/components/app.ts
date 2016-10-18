@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import './app.css';
+import './app.scss';
 
 
 @Component({

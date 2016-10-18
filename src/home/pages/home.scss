@@ -1,7 +1,11 @@
+@import 'functions/index';
+
+
 .foo {
   display: flex;
   transform: translate(100px) rotate(20deg);
   transform-origin: 0 0;
   color: #fff;
+  font-size: rem(30px);
   background: #c00;
 }

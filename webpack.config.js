@@ -29,9 +29,9 @@ const PORT = 3000;
 //  RULES
 //---------------------------------------------------------
 const rules = {
-  css: {
-    test: /\.css$/,
-    loader: ExtractTextPlugin.extract('css?-autoprefixer!postcss')
+  scss: {
+    test: /\.scss$/,
+    loader: ExtractTextPlugin.extract('css?-autoprefixer!postcss!sass')
   },
   html: {
     test: /\.html$/,
@@ -60,7 +60,7 @@ config.resolve = {
 
 config.module = {
   rules: [
-    rules.css,
+    rules.scss,
     rules.html,
     rules.typescript
   ]
@@ -77,7 +77,13 @@ config.plugins = [
       postcss: [
         autoprefixer({browsers: ['last 3 versions']})
       ],
-      resolve: {} // @see https://github.com/TypeStrong/ts-loader/issues/283
+      resolve: {}, // @see https://github.com/TypeStrong/ts-loader/issues/283
+      sassLoader: {
+        includePaths: ['src/shared/styles'],
+        outputStyle: 'compressed',
+        precision: 10,
+        sourceComments: false
+      }
     }
   }),
   new ContextReplacementPlugin(

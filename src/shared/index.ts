@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import './styles/styles.css';
+import './styles/styles.scss';
 
 
 @NgModule({
