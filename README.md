@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/r-park/angular-aot.svg?style=svg?style=shield&circle-token=dff73ad8ab0943424a01639d1707ff748a5b10ac)](https://circleci.com/gh/r-park/angular-aot)
+[![CircleCI](https://circleci.com/gh/r-park/angular-aot.svg?style=shield&circle-token=9072e0fa456002a4c0480d5c902da45bb11bf614)](https://circleci.com/gh/r-park/angular-aot)
 
 
 # Angular Ahead-of-Time (AoT) Compilation
