@@ -1,11 +1,13 @@
 const path = require('path');
 
 const autoprefixer = require('autoprefixer');
+const CheckerPlugin = require('awesome-typescript-loader').CheckerPlugin;
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
+const NgcWebpackPlugin = require('ngc-webpack').NgcWebpackPlugin;
 const ProgressPlugin = require('webpack/lib/ProgressPlugin');
 const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 const WebpackMd5Hash = require('webpack-md5-hash');
@@ -36,9 +38,14 @@ const rules = {
     test: /\.html$/,
     use: ['raw']
   },
+  sass: {
+    test: /\.scss$/,
+    use: ['raw-loader', 'postcss-loader', 'sass-loader'],
+    include: path.resolve('src')
+  },
   typescript: {
     test: /\.ts$/,
-    use: ['ts', 'angular2-template']
+    use: ['awesome-typescript-loader', 'angular2-template-loader']
   }
 };
 
@@ -59,8 +66,7 @@ config.resolve = {
 
 config.module = {
   rules: [
-    rules.css,
-    rules.html,
+    rules.sass,
     rules.typescript
   ]
 };
@@ -75,14 +81,14 @@ config.plugins = [
     options: {
       postcss: [
         autoprefixer({browsers: ['last 3 versions']})
-      ],
-      resolve: {} // @see https://github.com/TypeStrong/ts-loader/issues/283
+      ]
     }
   }),
   new ContextReplacementPlugin(
     /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
     path.resolve('src')
-  )
+  ),
+  new CheckerPlugin()
 ];
 
 
@@ -101,8 +107,16 @@ if (ENV_DEVELOPMENT || ENV_PRODUCTION) {
 
   config.plugins.push(
     new CommonsChunkPlugin({
-      name: ['polyfills'],
-      minChunks: Infinity
+      chunks: ['polyfills'],
+      name: 'polyfills'
+    }),
+    new CommonsChunkPlugin({
+      chunks: ['main'],
+      minChunks: module => /node_modules\//.test(module.resource),
+      name: 'vendor'
+    }),
+    new CommonsChunkPlugin({
+      name: ['polyfills', 'vendor'].reverse()
     }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
@@ -157,6 +171,10 @@ if (ENV_PRODUCTION) {
   config.output.filename = '[name].[chunkhash].js';
 
   config.plugins.push(
+    new NgcWebpackPlugin({
+      disabled: false,
+      tsConfig: path.resolve('tsconfig.json')
+    }),
     new WebpackMd5Hash(),
     new UglifyJsPlugin({
       comments: false,

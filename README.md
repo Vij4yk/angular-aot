@@ -27,8 +27,8 @@ Generating Production Artifacts
 
 Executing `npm run build` will:
 
-1. Pre-compile the component templates using `ngc`, and output the results to the **./build** folder
-2. Bundle and minify the app sources – including the output from `ngc` – to the **./dist** folder
+1. Perform AoT compilation and output the results to the **./build** folder
+2. Bundle and minify the app sources to the **./dist** folder
 
 
 NPM Commands
@@ -37,7 +37,5 @@ NPM Commands
 |Command|Description|
 |---|---|
 |npm start|Start the webpack development server @ **localhost:3000**|
-|npm run build|Sequentially calls `npm run build:ngc` and `npm run build:webpack`|
-|npm run build:ngc|Pre-compile component templates into **./build** folder|
-|npm run build:webpack|Bundle and minify production artifacts into **./dist** folder|
+|npm run build|Perform AoT compilation; bunde and minify to **./dist** folder|
 |npm run server|Serve the production artifacts from **./dist** folder @ **localhost:3000**|

@@ -17,14 +17,13 @@
     "node": ">=6.4"
   },
   "scripts": {
-    "build": "run-s build:ngc build:webpack",
-    "build:ngc": "ngc",
-    "build:webpack": "cross-env NODE_ENV=production webpack --display-chunks",
+    "build": "cross-env NODE_ENV=production webpack --display-chunks",
     "clean": "del-cli build dist",
     "prebuild": "npm run clean",
     "server": "cross-env NODE_ENV=development nodemon -w 'server/**/*.*' server/main.js",
     "server:webpack": "cross-env NODE_ENV=development webpack-dev-server",
-    "start": "npm run server:webpack"
+    "start": "npm run server:webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "@angular/common": "~2.4.2",

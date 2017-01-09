@@ -9,8 +9,8 @@
     ],
     "module": "es6",
     "moduleResolution": "node",
+    "noEmit": true,
     "noEmitHelpers": true,
-    "outDir": "build/tmp",
     "removeComments": true,
     "sourceMap": true,
     "target": "es5",
@@ -23,12 +23,16 @@
     "build",
     "dist",
     "node_modules",
-    "src/main.aot.ts",
     "tmp"
   ],
 
   "angularCompilerOptions": {
-    "debug": true,
-    "genDir": "build"
+    "genDir": "build",
+    "skipMetadataEmit": true
+  },
+
+  "awesomeTypescriptLoaderOptions": {
+    "forkChecker": true,
+    "useWebpackText": true
   }
 }
