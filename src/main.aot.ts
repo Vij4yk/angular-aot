@@ -1,15 +1,9 @@
-import { enableProdMode } from '@angular/core';
 import { platformBrowser } from '@angular/platform-browser';
-
-import { AppModuleNgFactory } from 'build/src/app/index.ngfactory';
-
-
-if (process.env.NODE_ENV === 'production') {
-  enableProdMode();
-}
+import { AppModuleNgFactory } from '../build/src/app/index.ngfactory';
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  platformBrowser().bootstrapModuleFactory(AppModuleNgFactory)
+  platformBrowser()
+    .bootstrapModuleFactory(AppModuleNgFactory)
     .catch(error => console.error(error));
 });
