@@ -1,11 +1,11 @@
 {
-  "name": "angular2-aot",
+  "name": "angular-aot",
   "version": "0.0.0",
   "description": "Angular2 Ahead-of-Time (AoT) Compilation",
-  "homepage": "https://github.com/r-park/angular2-aot",
+  "homepage": "https://github.com/r-park/angular-aot",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/r-park/angular2-aot.git"
+    "url": "git+https://github.com/r-park/angular-aot.git"
   },
   "author": {
     "name": "Richard Park",

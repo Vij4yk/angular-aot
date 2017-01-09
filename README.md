@@ -1,9 +1,9 @@
-[![CircleCI](https://circleci.com/gh/r-park/angular2-aot.svg?style=shield&circle-token=dff73ad8ab0943424a01639d1707ff748a5b10ac)](https://circleci.com/gh/r-park/angular2-aot)
+[![CircleCI](https://circleci.com/gh/r-park/angular-aot.svg?style=svg?style=shield&circle-token=dff73ad8ab0943424a01639d1707ff748a5b10ac)](https://circleci.com/gh/r-park/angular-aot)
 
 
-# Angular2 Ahead-of-Time (AoT) Compilation
+# Angular Ahead-of-Time (AoT) Compilation
 
-A minimal example using the Angular2 compiler cli to pre-compile component templates.
+A minimal example using the Angular compiler cli to pre-compile component templates.
 
 
 Files & Directories
